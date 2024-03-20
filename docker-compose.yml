@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  text-craft-dev:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: text-craft
+    volumes:
+        - './:/workspace'
+    stdin_open: true
+    tty: true
