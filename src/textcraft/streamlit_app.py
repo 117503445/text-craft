@@ -32,7 +32,7 @@ for dir_template in dir_templates.iterdir():
     replace_dict = meta["replace"]
 
     for k, v in replace_dict.items():
-        s = st.text_input(v)
+        s = st.text_input(v, key=f"{dir_template.name}_{k}")
         if s:
             actual_dict[k] = s
 
