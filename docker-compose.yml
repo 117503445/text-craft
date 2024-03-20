@@ -4,7 +4,7 @@ services:
   text-craft-dev:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_dev
     container_name: text-craft
     volumes:
         - './:/workspace'
