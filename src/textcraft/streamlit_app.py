@@ -5,18 +5,16 @@ import json
 
 dir_config = Path(__file__).parent.parent.parent / "config"
 dir_templates = dir_config / "templates"
+dir_templates.mkdir(parents=True, exist_ok=True)
 
 
 if len(list(dir_templates.iterdir())) == 0:
     print("No templates found, creating example template")
     dir_template = dir_templates / "example"
     dir_template.mkdir(parents=True, exist_ok=True)
-    (dir_template / "meta.json").write_text(json.dumps({
-        "replace": {
-            "{{name}}": "Name",
-            "{{age}}": "Age"
-        }
-    }))
+    (dir_template / "meta.json").write_text(
+        json.dumps({"replace": {"{{name}}": "Name", "{{age}}": "Age"}})
+    )
     (dir_template / "template.txt").write_text("Name: {{name}}, Age: {{age}}")
 
 for dir_template in dir_templates.iterdir():
@@ -40,7 +38,6 @@ for dir_template in dir_templates.iterdir():
 
     for k, v in actual_dict.items():
         template = template.replace(k, v)
-
 
     language = meta.get("language", "python")
 

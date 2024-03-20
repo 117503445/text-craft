@@ -25,8 +25,6 @@ COPY --from=builder /root/.rye /root/.rye
 COPY src ./src
 COPY run.py ./
 
-RUN mkdir -p /workspace/config/templates
-
 EXPOSE 8501
 
 ENTRYPOINT [ "./run.py" ]
